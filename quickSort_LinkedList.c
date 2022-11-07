@@ -19,22 +19,22 @@ typedef struct Node * NodeAddress;  // creating a new data type NodeAddress and 
 NodeAddress parition(NodeAddress start, NodeAddress end){
     // start is the first element of the linked list part being sorted
     // end is the last element of the linked list part being sorted
-    // We will take the last element as pivot and place it at its correct position in sorted array and place all smaller elements to left of pivot and all greater elements to right of pivot
-    int pivot = end->val;
+    // We will take the first element as pivot and place it at its correct position in sorted array and place all smaller elements to left of pivot and all greater elements to right of pivot
+    int pivot = start->val;
     NodeAddress wall = start; // wall is the first element of the linked list
-    NodeAddress j = start; // j is the first element of the linked list
-    while(j != end){
-        if(j->val <= pivot){
-            int swap_temp = wall->val;
-            wall->val = j->val;
-            j->val = swap_temp;
+    NodeAddress scout = start->next; // j is the next element to wall of the linked list
+    while(scout != end->next){
+        if(scout->val < pivot){
             wall = wall->next;
+            int swap_temp = wall->val;
+            wall->val = scout->val;
+            scout->val = swap_temp;
         }
-        j = j->next;
+        scout = scout->next;
     }
     int swap_temp = wall->val;
-    wall->val = end->val;
-    end->val = swap_temp;
+    wall->val = start->val;
+    start->val = swap_temp;
     
     return wall;
 }
