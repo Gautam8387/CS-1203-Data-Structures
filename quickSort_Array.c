@@ -4,28 +4,31 @@
 #include<stdlib.h>
 #include<time.h>
 
-
-int partition(int *arr, int low, int high){
-    int pivot = arr[high];      // pivot
-    int wall = (low - 1);          // Index of smaller element
+/* ========== Partition ========== */
+int partition(int *arr, int start, int end){
+    int pivot = arr[start]; // pivot
+    int wall = start; // wall is the first element of the array
     //  The wall moves to the right if the encountered element is lesser than the pivot
     //  The wall stays in the same position if the encountered element is greater than the pivot
-    for (int j = low; j <= high- 1; j++){
-        // If current element is smaller than or equal to pivot
-        if (arr[j] <= pivot){
-            wall++;    // increment index of smaller element
+    int scout = start+1;        // scout is the next element to wall of the array, it will check all the elements to the either side of the wall
+    while(scout <= end){
+        if(arr[scout] < pivot){
+            wall++;                         // Incement the wall, so that the wall is always one step ahead of the scout and the smaller elements are always to the left of the wall
             int swap_temp = arr[wall];
-            arr[wall] = arr[j];
-            arr[j] = swap_temp;
+            arr[wall] = arr[scout];
+            arr[scout] = swap_temp;
         }
-        // by this logic, all the elements to the left of the wall are lesser than the pivot and all the elements to the right of the wall are greater than the pivot
+        scout++;                            // Increment the scout so it check next element
     }
+    // by this logic, all the elements to the left of the wall are lesser than the pivot and all the elements to the right of the wall are greater than the pivot
     // bringing the pivot to the correct position
-    int swap_temp = arr[wall+1];
-    arr[wall+1] = arr[high];
-    arr[high] = swap_temp;
-    return (wall + 1);
+    int swap_temp = arr[wall];
+    arr[wall] = arr[start];
+    arr[start] = swap_temp;
+
+    return wall;
 }
+
 /* ========== Quick Sort ========== */
 // As long as my partation function is correct, this should work
 // The partation function is correct if it returns the correct position of the pivot, which is the position of the an element in the array, left of which everything is smaller than the pivot and right of which everything is greater than the pivot.
