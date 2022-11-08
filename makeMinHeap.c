@@ -67,5 +67,6 @@ int main(int argc, char const *argv[])
     makeMinHeap(A, n);
 
     printArray(A, n);
+    free(A);
     return 0;
 }
