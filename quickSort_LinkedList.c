@@ -40,7 +40,7 @@ NodeAddress parition(NodeAddress start, NodeAddress end){
 }
 
 /*==== Quick Sort ====*/
-void quickSortLinkedList(NodeAddress head, NodeAddress tail){
+int quickSortLinkedList(NodeAddress head, NodeAddress tail){
     // We will follow the similar recursive approach as we did in the array
     if (head == tail){
         return 0;
