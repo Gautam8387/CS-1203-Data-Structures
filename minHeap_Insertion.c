@@ -12,7 +12,7 @@ void swap(int *a, int *b)
 }
 
 /* ========== Insert ========== */
-int * heapInsert(int *A, int n, int k){
+int * heapInsert(int *A, int n, int k){             // n is the size of array so (n-1) is the last index
     A = realloc(A, (n+1)*sizeof(int));              // reallocating memory for the array to adjust for one new element
     A[n] = k; // inserting the new element at the end of the array
     int i = n;
