@@ -74,13 +74,16 @@ int main(int argc, char const *argv[])
     printf("Enter the number of elements in the array: ");
     scanf("%d", &n);
     A = generateArray(n); 
+    printf("Array is: ");
     printArray(A, n);
     // Now we have a randomly generated array.
     // We will create a maximum heap from this array.
     makeMaxHeap(A, n);
+    printf("Heap is: ");
     printArray(A, n);
 
     heapSort(A, n);
+    printf("Sorted Array is: ");
     printArray(A, n);
     return 0;
 }
