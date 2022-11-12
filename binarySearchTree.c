@@ -17,6 +17,9 @@
 // Linked List, there is a clear concept of order.
 // Binary Trees have an invarint: Everything to left is smaller, everything to right is bigger.
 // This reduces the search space, if I know the think I am searching is smaller than right, I donot have to go to right subtree to search.
+
+#include<stdio.h>
+#include<stdlib.h>
 struct nodeType
 {
 	int val;
