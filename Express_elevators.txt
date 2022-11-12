@@ -54,4 +54,4 @@ Deletion is also not easy in this scenerio
 We will have to delete all the pointers which are pointing to the node we are deleting
 
 Look up: skip list
-Skip List are linked list with multiple levels
+Skip List are linked list with multiple levels. It is used to reduce the time complexity of searching in a linked list. It is used in databases.
