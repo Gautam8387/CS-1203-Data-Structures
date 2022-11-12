@@ -100,4 +100,20 @@ nodeAddress insert2(nodeAddress root, int val){
 // How to delete stuff??
 // If its the end nodes getting deleted, its trival. What if its somewhere in the middle
 // In-order trivarsal, in order to delete
-// 
+// Dont want a degenrate tree (it is just like a linked list)
+// We need a well balanced tree
+// Print order: Left-Root-Right 
+
+void inOrder(nodeAddress root){
+	// Print entrie thing in order: Left-Root_Right
+	if(root->left){
+		inOrder(root->left)
+	}
+	// check if root exist for printing
+	if(root){
+		printf("%d",root->val);
+	}
+	if(root->right){
+		inOrder(root->right)
+	}
+}
