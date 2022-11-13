@@ -1,0 +1,104 @@
+Make File
+	- It is file that contains a set of directives used by make to determine how to build the program.
+	- Can simplify the build process by specifying the dependencies between files and the commands to build them.
+	- Made up of rules, each rule specifies a target and a set of dependencies.
+	- Makefile Example:
+		- target: dependencies
+			- command
+			- command
+			- ...
+	- makefile -f <filename> - specify a different makefile
+	- To run in gcc:
+		- gcc -o <output file> <input file> 
+	- Make file set out the compiler and linker commands
+	# Download a sample makefile and edit it
+	EXAMPLE:
+		# Hash is a comment 
+		CC = gcc    # Compiler is gcc
+		# Spaces and tabs are important, white spaces may mess up the make file 
+		CFLAGS = -Wall -g # Flags for the compiler 
+		# There are different modes in which the make file can be run, default is all
+		all:
+
+		hello: # here I will write all the files that are needed to build the hello program
+			hello.o hlib.o    # These are the dependencies for the hello program, in order to compile hello.o 
+			hello.o hello.c hlib.h # These are the dependencies for the hello program, in order to compile hello.o
+			# Going step by step for each dependency
+			$(CC) $(CFLAGS) %@ $^ -o $@ # This is the command to compile the hello program
+
+			"Todays Pain, Tomorrow's Gain" - Debayan
+
+DEBUGGING:
+	- Step 1: Know what your program is supposed to do
+	- Step 2: Know what your program is not supposed to do
+	- Step 3: Debuge
+
+	- Write comment in each step of line so you knwo what you are supposed to do
+	- Use of #include<assert.h> to check if the program is working as expected
+	- Assert will print an error is the condition is not met, but will not do anything if the condition is met
+	- the assert will have the invariants of the program
+
+GDB
+	- gdb is a debugger that can be used to debug C programs. It can be used to set breakpoints, step through the code, and print the values of variables. It can also be used to print the stack trace of the program.
+	- gdb is a command line tool. It can be used to debug C programs in the terminal. It can also be used to debug C programs in VS Code.
+	- To debug a C program in the terminal, use the following command:
+	- gdb <program_name>
+	- gdb can be used to set breakpoints. A breakpoint is a line in the program where the program will stop executing. To set a breakpoint, use the following command:
+	- break <line_number>
+	- it can be used to break code line by line
+	- gdb break main
+	- Come Commands:
+		help, quid, list, next, step, finish, backtrace (stack trace for recursion)
+
+Time
+	- time.h is a header file that contains functions for measuring time.
+	- Dangerous: Put the time check in program itself; printing y-x at end of program
+	- Your piece of code is not the only thing running on the computer. There are other processes running on the computer. The time taken by your program to run will depend on the other processes running on the computer.
+	- Many definitions of programs
+
+POINTERS on FUNCTIONS:
+	- Callbacks and Function Values
+	int func(int *a, int *a);		// This is a function declaration
+	int (*p)(int *a, int *b);    // This is a pointer to a function
+	- It allows you to rename functions (polymorphism)
+	- It allows you to pass functions as arguments to other functions
+
+	int (*say) (const char *);
+	int main(){
+		say = putf;  
+		say("Hello World\n");   	// We named the function putf as say 
+		return 0;
+	}
+
+	CALLBACKS:
+	- A callback is a function that is passed as an argument to another function. The function that accepts the callback is called the callback function.
+	void blah(int *a, int (*funct)(int *x)){
+		// I can actually fun func on a 
+		for(int i = 0; i < 10; i++){
+			a[i] = funct(&a[i]);
+		} // run a function on some else, and rum on something else
+	}
+	
+	- Useful if datatype is not known
+	- Most useful in sorting programs
+	- Idea of sort actually remains the same despite of datatype
+	
+	// Maybe its a struct with 15 different things and sort by ID
+	// Write a generalized quicksort 
+	// This is where void pointers are useful
+	// Not supposed to edit the values inside compare
+	void quicksort(void *base, size_t nitems, size_t size, int (*compar)(const void *a, const void *b)){
+		// Do the quicksort
+	}
+
+Dispatch Tables
+	- I have a pointer
+	- I have a pointer to functions
+	- Can I make array of function?
+	int (* table [UCHAR_MAX+1]) (int *a);
+	int i, c;
+	for(i = 0; i < UCHAR_MAX+1; i++){
+		table[i] = putchar;
+	}
+	// If we read a character 'c' what we want to do is read table[c](c) similarly for a, v => table[a](a), table[v](v)
+	// Reasonable for many scenerios 
