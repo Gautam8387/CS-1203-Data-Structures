@@ -1,0 +1,145 @@
+Data Structures
+Ashoka University
+Debayan Gupta
+Nov 15, 2022
+CS 1203 Monsoon 2022
+Quiz 1
+
+Instructions:
+	• Read all the instructions on this page.
+	• The paper has 5 questions and 5 pages.
+	• All solutions must be written in C and each question has a starter snippet of code to help you. Please ensure you use this for your solutions.
+	• Think carefully. Some questions may be a lot easier than they initially appear!
+	• You are not allowed to lift code from the internet and pass it off as your own unless it was already on your GitHub Repo before the exam.
+	• If you find useful code on the internet and want to use it, you must read, understand, rewrite it yourself. Do not forget to cite it.
+	• Submit all the code for all the questions in a single zip file called FirstName_LastName_CS1203_Quiz1.zip on Google Classroom.
+	• All code that you submit need to have everything it needs to run when executed. In other words, any function calls in your programs need to be defined and written out.
+	• Each question should have a separate C file named QuestionNumber-Subpart.c. As an example: (1-a.c).
+	• Your code needs to be submitted by 1:29 pm Thursday, 17 November 2022. No late submissions will be accepted.
+	Advice:
+	• Do not spend too much time on any single problem. Read them all first, and attack them in the order that allows you to make the most progress.
+	• Your code should be readable. We will try to be lenient, but overly complex code will be penalised.
+
+Question Points
+Fizzbuzz 15
+Reversal of Fortune 30
+BST is the BEST 20
+Heaps of Fun 15
+Sort of OK.. 20
+Total: 100
+
+Name: Gautam Ahuja
+
+Problem 1. [15 points] Fizzbuzz (2 parts)
+(a) [5 points] Write a program which inputs an integer x and prints “fizz” if it’s divisible by 3 or
+5, prints “buzz” if it’s divisible by 11 or 13, and prints “fizzbuzz” if it’s divisible by 33, 39,
+55, or 65. It should print the integer itself in all other cases.
+	void basicFizzBuzz(int x)
+	{
+		// Your code goes here
+	}
+(b) [10 points] Assume you have an array f of length nf, and an array b of length nb, each containing
+the integers you need to check for to print fizz and buzz.
+So, for each integer in your input array a of length m, you need to check if it’s divisible by
+something in f. If so, you should print “fizz”; if it’s divisible by something in b, you should
+print “buzz”; and if it is divisible by something in f and b, you should print “fizzbuzz”. (The
+previous question has f = [3,5] and b = [11,13], and both nf and nb are 2.) You may assume
+there are no repetitions in the arrays and nothing appears in both.
+	void advanc edFizzBuzz(int *a , int m, int *b, int nb, int *f , int nf 
+	{
+		// Your code goes here
+	}
+
+
+Problem 2. [30 points] Reversal of Fortune (4 parts)
+(a) [5 points] Consider a linked list with three fields: val, next, and next2. Here, next2 points
+two nodes ahead, i.e., next next. Given an array with n elements, convert it into such a linked
+list. All pointers should work correctly for full credit.
+	NodeAddress arrayToLLWithNext2(int *a, int n)
+	{
+		// Your code goes here
+		return head ;
+	}
+(b) [10 points] Given the head pointer of such a list, write a function to reverse the list.
+	NodeAddress reverseLLWithNext2(NodeAddress head)
+	{
+		// Your code goes here
+		return head;
+	}
+(c) [5 points] Now, we have four fields: val, next, k and nextk. Given a value for k, nextk points
+k nodes ahead. (So the previous question merely had k=2, and a normal linked list has k=1.)
+k is essentially a look-ahead. We want you to generate a random value of k for EACH node.
+k only takes values between 2 and 5 (both included). You can use a C random library for this,
+no issue. If at any point k overshoots the list i.e. k dictates that nextk points at an element
+beyond the list, nextk should just be Null. Given an array with n elements, convert it into such
+a linked list. All pointers should work correctly for full credit.
+	NodeAddress arrayToLLWithNextK(int *a, int n)
+	{
+		// Your code goes here
+		return head;
+	}
+(d) [10 points] Given the Head pointer of such a list, write a function to reverse the list.
+	NodeAddress reverseLLWithNextK(NodeAddress head)
+	{
+		// Your code goes here
+		return head ;
+	}
+
+
+Problem 3. [20 points] BST is the BEST (3 parts)
+(a) [10 points] Given an array with n unique integers, produce a Reverse BST. Here, the left child
+is always larger and the right child is always smaller (opposite of a normal BST). Then, print
+the elements in prefix order (root, left child, right child).
+	NodeAddress arrayToReverseBST(int *a, int n)
+	{
+		// Your code goes here
+		return root;
+	}
+	void prefixPrint(NodeAddress root)
+	{
+		// Your code goes here
+	}
+(b) [5 points] Given an integer k, print the next largest element (successor) in the Reverse BST.
+If k does not exist in this BST, print "Pudding" and if k’s successor does not exist in this BST,
+print "Hamburger".
+void successorReverseBST(NodeAddress root, int k)
+	{
+		// Your code goes here
+	}
+(c) [5 points] Given any two integers x and y in the Reverse BST, find the distance between the
+two in sorted order. That is, count how many numbers lie in between these two integers x and
+y. If x, y or both x and y don’t exist in the BST, return -1.
+	intsortedDistance(NodeAddress root, int x , int y)
+		{
+			// Your code goes here
+			return distance;
+		}
+
+
+Problem 4. [15 points] Heaps of Fun (2 parts)
+(a) [10 points] Given a max heap, print the third largest number.
+	void thirdLargestNum(int *maxHeap)
+	{
+		// Your code goes here
+	}
+(b) [5 points] Given a max heap – assuming it is stored in the usual array mechanism – print the
+smallest number.
+	void returnSmallestNum(int *maxHeap)
+	{
+		// Your code goes here
+	}
+
+
+Problem 5. [20 points] Sort of OK.. (2 parts)
+(a) [10 points] Given a list of length n (random integers), sort every third element. All other
+elements should remain untouched.
+	int *sortEveryThirdElement(int *a, int n)
+	{
+		// Your code goes here
+		return a ;
+	}
+(b) [10 points] Now, given a value of k, print the k smallest elements among the untouched elements.
+	void kSmallestAmongUntouched(int *a, int k)
+	{
+		// Your code goes here
+	}
