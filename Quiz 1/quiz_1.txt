@@ -117,7 +117,8 @@ y. If x, y or both x and y don’t exist in the BST, return -1.
 
 
 Problem 4. [15 points] Heaps of Fun (2 parts)
-(a) [10 points] Given a max heap, print the third largest number.
+In question 4-a, if the heap array is smaller than 3, return Null.
+(a) [10 points] Given a max heap, print the third largest number. n is the size of the heap.
 	void thirdLargestNum(int *maxHeap)
 	{
 		// Your code goes here
