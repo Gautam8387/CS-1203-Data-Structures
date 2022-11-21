@@ -35,9 +35,9 @@ if(x<0.2) numE += 1;
 approx one in every 5 floor, you will get 3 elevators
 and approx one in every 10 floor, you will get 10 elevators
 
-struct nodeType{
+struct node{
     int val;
-    struct nodeType **E;
+    struct node **E;
     struct node *next;
     int num;
 }
@@ -50,3 +50,7 @@ approx every 3rd element will have a size 2 array
 approx every 5th element will have a size 3 array
 All locations are empty points, fill the pointers with appropriate values
 SETTING THE POINTERS IS THE HARD PART
+Deletion is also not easy in this scenerio 
+We will have to delete all the pointers which are pointing to the node we are deleting
+
+Look up: skip list
