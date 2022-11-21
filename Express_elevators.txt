@@ -1,0 +1,52 @@
+We will write the linked  list vertically
+1->2->3->4->5->6->7->8->9->10->NULL 
+We will write the linked  list vertically
+This will be like a elevator. We will have an extra pointer which point to a further node, like an express way
+
+struct nodeType{
+    int val;
+    struct nodeType *next[];
+    // We used an array of pointers. 
+    // For most of the elements the length of this array will be 1
+    // For some elements (the express ways) the length of this array will be 2, it has next[0] and next[1] which has the look ahead
+    int num; // think of it as num elevators
+
+}
+/* idea of logic
+c = head;
+s = 1;
+if(count%5 == 0) s++;
+*/
+
+This concept is SKIP LIST in data structure. It is used to reduce the time complexity of searching in a linked list. It is used in databases.
+These have excellent performance in searching, insertion and deletion. It is a probabilistic data structure. It is used in databases and caches.
+
+Randomise the jumps.
+My enemy cant know what I am doing if I dont know what I am doing
+
+Trick to randomize:
+generate a random number between 0 and 1, every time I have a node
+If this number is less than 0.1, I will have 3 elevators on this floor
+
+numE = 1;
+if(x<0.2) numE += 1;
+if(x<0.2) numE += 1;
+
+approx one in every 5 floor, you will get 3 elevators
+and approx one in every 10 floor, you will get 10 elevators
+
+struct nodeType{
+    int val;
+    struct nodeType **E;
+    struct node *next;
+    int num;
+}
+typedef struct nodeType *nodeAddress;
+
+E = (nodeAddress *)malloc(sizeof(nodeAddress)*numE);
+
+We through that sequence of things, generate particular number and generate that array
+approx every 3rd element will have a size 2 array
+approx every 5th element will have a size 3 array
+All locations are empty points, fill the pointers with appropriate values
+SETTING THE POINTERS IS THE HARD PART
