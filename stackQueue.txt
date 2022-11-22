@@ -26,3 +26,64 @@ Imagine queue has 10 people. (Queue using Stack)
     - BUT WHAT IS THE CHECK to make sure I end?
     - If n == max, then queue is full
     - If n == 0, then queue is empty
+
+    - Now suppose we keep extracting. 
+    - Now start = 4, n = 6
+    - Extract again
+    - start = 5, n = 5
+    - Extract Again
+    - start = 6, n = 4
+    - Extract Again
+    - start = 7, n = 3
+    - Now if I extract again???
+        = What we should do is: start = (start + 1) % max
+        = start also wraps around
+    - Now just keep going    
+    - When should the extraction fail?
+        = When n = 0 (queue is empty)
+
+STACK APPLIATIONS
+Suppose we are writing a piece of arithmetic: (5+4)*(9-2^3)
+- Can we seen as a tree?
+                       *
+                    /    \
+                  +       -
+                /   \   /   \
+               5     4  9    ^
+                           /   \
+                          2     3
+- String Parser
+- Go in a post order: left-right-root: 5 4 + 9 2 3 ^ - * : Operator comes last
+- In arithmetic we write as 5+2
+- In algebra we suddenly shift it: f(a,b): + 5 2
+- This post fix notation is what computer actually uses. It is extreamly powerful as there are no brackets.
+
+READING POST FIX:
+- 5 4 +
+- Every operator requires 2 elements
+- You first pop from the Stack (right end of array)
+- + is extracted, it needs two parameters, a + bit
+- Pop next two elements from the stack
+- Calculate the value and put it back in the stack
+- With each operator, I am going to apply it to next two elements: pop two elements and push one element back
+- For above: 5 4 + 9 2 3 ^ - *
+- Pop *, now it needs two elements
+
+- What you wanna do is you wanna find the smallest chunk first. Go right to left until you find operator followed by two operands.
+- You pop that and the operands and insert the value back.
+- Repeat the step (AN OPERATOR FOLLOWED BY TWO ELEMENTS) Right->Left
+
+WHY BOTHER WITH POST FIX?
+- Going in order requires brackets
+- Example: 5 + 4 * 3
+    = You can bracket in two ways: (5 + 4) * 3 or 5 + (4 * 3)
+    = The first one is 21, the second one is 17
+    = Post order format of the first one is: 5 4 + 3 *
+    = Post order format of the second one is: 5 4 3 * +
+    = You dont need bracketing in both, you can describe the order of operations in the post order format
+    = Post order format is unambiguous
+- Once you have the post order format, you can evaluate it very mechanically. You dont need to worry about the order of operations.
+- LookUP: Polish Notation, Non Polish Notation
+- NOTE: Calling functions recursively is also post order traversal
+- Recursion happens on a stack.
+- Stack Overflow: When the memory of the stack is full, you get a stack overflow error.
