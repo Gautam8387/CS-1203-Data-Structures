@@ -10,4 +10,26 @@ Concepts Used:
       = EX: just because point 763 is nearest to point 1 doesnt mean that point 1 is nearest to point 763. Not a reciprocal relationship.
       = Need to remember the distance all the distances.
       = An array can be given, test = [1, 27, 89468] give the sets of 40 nearest point to each point in the array.
+    
 Quad Trees offer you to do this very quickly 
+Get an array of 40 (something like Max Heap) and then you can just add the new points to the array and then remove the largest point if the new dist < max of 40 dist.
+
+Quad Trees:
+- create a new data structure
+- it is a square: minX, minY, maxX, maxY
+- 4 pointers to 4 children
+- Rule: If I have more than k points inside me, Divide it into 4 children
+- Rule: If I have less than k points inside me, I am a leaf
+- Rule: If I have no points inside me, I am a leaf
+- Like dividing a page into 4 parts and sending each point to either of the 4 parts. Keep dividing until you have less than k points in each part.
+- LOTS of pointers
+
+minX, minY, maxX, maxY
+n, iarr
+c1, c2, c3, c4
+
+- n = number of points in the node
+- iarr = array of indices of the points in the node
+- c1, c2, c3, c4 = pointers to the 4 children
+
+Go deeper into the tree until you have less than k points in each part. Then you have a leaf node.
