@@ -1,0 +1,13 @@
+Concepts Used:
+    - FMM: Fast Multiple Method
+      = For large computations like two galaxy colliding simulations, the FMM is used to speed up the computation time.
+    - Nurse Neighbour's Problems
+      = The nurse neighbour problem is a problem that occurs when the particles are too close to each other. This causes the particles to be attracted to each other and the simulation to be inaccurate.
+      = An array of elements where each row is a (x,y) value. Literally a table of dots.
+      = Lets say there are a billion dots in this table. Think in iterms of two arrays x[0], y[0] 
+      = Q: How do we find the k-th nearest points?
+      = For each (x,y) need an array of size k to store the k nearest points.
+      = EX: just because point 763 is nearest to point 1 doesnt mean that point 1 is nearest to point 763. Not a reciprocal relationship.
+      = Need to remember the distance all the distances.
+      = An array can be given, test = [1, 27, 89468] give the sets of 40 nearest point to each point in the array.
+Quad Trees offer you to do this very quickly 
