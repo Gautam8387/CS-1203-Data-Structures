@@ -107,13 +107,13 @@ nodeAddress insert2(nodeAddress root, int val){
 void inOrder(nodeAddress root){
 	// Print entrie thing in order: Left-Root_Right
 	if(root->left){
-		inOrder(root->left)
+		inOrder(root->left);
 	}
 	// check if root exist for printing
 	if(root){
 		printf("%d",root->val);
 	}
 	if(root->right){
-		inOrder(root->right)
+		inOrder(root->right);
 	}
 }
