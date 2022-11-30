@@ -67,3 +67,35 @@ void peek(){
         printf("\nThe top element is %d", top->data);
     }
 }
+
+// Driver code
+int main(int argc, char const *argv[])
+{
+    int choice, data;
+    do{
+        printf("1. Push\n2. Pop\n3. Display\n4. Peek\n5. Exit\n");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+                printf("\nEnter the data to be pushed: ");
+                scanf("%d", &data);
+                push(data);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                peek();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("\nInvalid choice");
+        }
+    } while (choice != 5);    
+    return 0;
+}
