@@ -1,0 +1,28 @@
+Stack is LIFO: Last In First Out
+Queue is FIFO: First In First Out
+
+Queue Axioms:
+    - Insertion at the end
+    - Deletion at the front
+    - Insertion and deletion are O(1)
+
+
+Imagine queue has 10 people. (Queue using Stack)
+    - During the act of insertion, the starying position should not change.
+    - Take max = 7 (size of the queue), n = 0 (current elements in queue), start = 0 (starting position of the queue)
+    - Start remains fixed, n increases
+    - When n = max, start = 0
+    - Location of end = start + n 
+    - Keep inserting (lets say till 4)
+    - Now if want to extract one element
+        = Move the start to the next position: start = start + 1
+        = change the value of n: n = n - 1
+        = Next insertion happens at position start+n
+    - Array full upto index 6. But two initial positions are empty.
+    - Extract bit is fine. But insertion is not fine.
+    - I am inserting as q[start + n]
+    - Now to solve that problem, we can do insertion as:  q[(start + n) % max]  
+    - Just like a clock wrapes around, the queue will also wrap around.
+    - BUT WHAT IS THE CHECK to make sure I end?
+    - If n == max, then queue is full
+    - If n == 0, then queue is empty
