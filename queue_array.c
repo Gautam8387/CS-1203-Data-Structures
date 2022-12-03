@@ -68,6 +68,41 @@ void Rear(){
     }
 }
 
+int main(int argc, char const *argv[])
+{
+    int choice, data;
+    do{
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Front\n5. Rear\n6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+                printf("Enter the data to be enqueued: ");
+                scanf("%d", &data);
+                enqueue(data);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                Front();
+                break;
+            case 5:
+                Rear();
+                break;
+            case 6:
+                printf("Exiting...");
+                break;
+            default:
+                printf("Invalid choice");
+        }
+    }while(choice != 6);
+    return 0;
+}
+
 
 
 
