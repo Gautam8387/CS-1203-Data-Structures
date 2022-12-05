@@ -1,3 +1,12 @@
+// The Huffman algorithm works as follows:
+// 1. Create a leaf node for each symbol and add it to the priority queue.
+// 2. While there is more than one node in the queue:
+// 2.1. Remove the two nodes of highest priority (the lowest frequency) from the queue
+// 2.2. Create a new internal node with these two nodes as children and with frequency equal to the sum of the two nodes' frequencies. Add this node to the priority queue.
+// 3. The remaining node is the root node and the tree is complete.
+//
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -10,14 +19,16 @@ struct MH_Node
 	struct MH_Node *l, *r;
 };
  
- //
+// A Min Heap: Collection of min heap (or Hufmman tree) nodes. This will help us to extract the two minimum nodes in each step.
+// The heap size will be equal to the number of unique characters in the input string.
 struct M_Heap
 {
 	unsigned size;
 	unsigned space;
 	struct MH_Node **array;
 };
- 
+
+// A utility function to allocate a new min heap node with given character and frequency of the character.
 struct MH_Node* newNode(char character, unsigned frequency)
 {
     struct MH_Node* temp = (struct MH_Node*) malloc(sizeof(struct MH_Node));
@@ -27,7 +38,7 @@ struct MH_Node* newNode(char character, unsigned frequency)
     return temp;
 }
  
- 
+// A utility function to create a min heap of given capacity.
 struct M_Heap* createM_Heap(unsigned space)
 {
     struct M_Heap* M_Heap = (struct M_Heap*) malloc(sizeof(struct M_Heap));
@@ -37,7 +48,7 @@ struct M_Heap* createM_Heap(unsigned space)
     return M_Heap;
 }
  
- 
+// A utility function swap two nodes of min heap. Needed for min heapify. 
 void swapMH_Node(struct MH_Node** a, struct MH_Node** b)
 {
     struct MH_Node* t = *a;
@@ -45,7 +56,7 @@ void swapMH_Node(struct MH_Node** a, struct MH_Node** b)
     *b = t;
 }
  
- 
+// The standard minHeapify function.
 void M_Heapify(struct M_Heap* M_Heap, int idx)
 {
     int smallest = idx;
@@ -64,13 +75,15 @@ void M_Heapify(struct M_Heap* M_Heap, int idx)
 		M_Heapify(M_Heap, smallest);
     }
 }
- 
+
+// A utility function to check if size of heap is 1 or not.
 int isSizeOne(struct M_Heap* M_Heap)
 {
     return (M_Heap->size == 1);
 }
  
  
+// A standard function to extract minimum value node from heap.
 struct MH_Node* extractMin(struct M_Heap* M_Heap)
 {
     struct MH_Node* temp = M_Heap->array[0];
@@ -80,7 +93,7 @@ struct MH_Node* extractMin(struct M_Heap* M_Heap)
     return temp;
 }
  
- 
+// A utility function to insert a new node to Min Heap
 void insertM_Heap(struct M_Heap* M_Heap, struct MH_Node* MH_Node)
 {
  
@@ -94,7 +107,7 @@ void insertM_Heap(struct M_Heap* M_Heap, struct MH_Node* MH_Node)
     M_Heap->array[i] = MH_Node;
 }
  
- 
+// A standard function to build min heap
 void buildM_Heap(struct M_Heap* M_Heap)
 {
     int n = M_Heap->size - 1;
@@ -103,7 +116,7 @@ void buildM_Heap(struct M_Heap* M_Heap)
 		M_Heapify(M_Heap, i);
 }
  
- 
+// A utility function to print an array of size n. This array contains the codes of the characters.
 void printArr(int arr[], int n)
 {
     int i;
@@ -181,8 +194,6 @@ void main()
 	char arr[] = {'a', 'b', 'c', 'd', 'e', 'f'};
 	int frequency[] = {5, 9, 12, 13, 16, 45};
 	int size; 
-	clrscr();
 	size = sizeof(arr)/sizeof(arr[0]);
 	HuffmanCodes(arr, frequency, size);
-	getch();
 }
