@@ -476,11 +476,28 @@ char* decompress(char* str, struct MinHeapNode* root)
  
 //   return 0;
 // }
+void printBits(char* str)
+{
+  for (int i = 0; str[i]; i++) {
+    // Convert the character to an int and
+    // print its binary representation
+    int val = (int)str[i];
+    for (int j = 7; j >= 0; j--)
+      printf("%d", (val >> j) & 1);
+    printf(" ");
+  }
+  printf("\n");
+}
 
 
 int main()
 {
-  char str[] = "Hello, world!";
+//   char str[] = "Hello, world!";
+char * str;
+// input a string
+printf("Enter a string: ");
+gets(str);
+
   int freq[256] = {0};
     for (int i = 0; str[i]; i++)
         freq[str[i]]++;
@@ -498,6 +515,11 @@ int main()
   char* codes[256];
   getCode(root, codes, arr, top);
  
+// print string ithout compression in terms of bits
+    printf("String in bits: ");
+    printBits(str);
+    
+
   // Compress the string
   char* compressed = compress(str);
   printf("Compressed string: %s\n", compressed);
