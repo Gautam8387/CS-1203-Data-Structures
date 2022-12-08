@@ -518,7 +518,7 @@ gets(str);
 // print string ithout compression in terms of bits
     printf("String in bits: ");
     printBits(str);
-    
+
 
   // Compress the string
   char* compressed = compress(str);
@@ -527,6 +527,15 @@ gets(str);
   // Decompress the string
   char* decompressed = decompress(compressed, root);
   printf("Decompressed string: %s\n", decompressed);
+
+  // Compression Ratio
+    float ratio = (float)strlen(str)/(float)strlen(compressed);
+    printf("Compression Ratio: %f\n", ratio);
+
+// Compression efficiency
+    float efficiency = (1 - ratio) * 100;
+    printf("Compression Efficiency: %f\n", efficiency);
+
  
   return 0;
 }
