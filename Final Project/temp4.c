@@ -268,34 +268,61 @@ void HuffmanCodes(char data[], int freq[], int size)
 
 // Function to get the Huffman codes for each character
 // in the input string
-void getCodes(struct MinHeapNode* root, char* codes[256],
-              int arr[], int top)
-{
-  // If the current node is a leaf node,
-  // store its data and its code in the codes array
-  if (isLeaf(root)) {
-    codes[root->data] = (char*)malloc(top + 1);
-    for (int i = 0; i < top; i++)
-      codes[root->data][i] = arr[i] + '0';
-    codes[root->data][top] = '\0';
-  }
+// void getCodes(struct MinHeapNode* root, char* codes[256],
+//               int arr[], int top)
+// {
+//   // If the current node is a leaf node,
+//   // store its data and its code in the codes array
+//   if (isLeaf(root)) {
+//     codes[root->data] = (char*)malloc(top + 1);
+//     for (int i = 0; i < top; i++)
+//       codes[root->data][i] = arr[i] + '0';
+//     codes[root->data][top] = '\0';
+//   }
  
-  // If the current node has a left child,
-  // add a '0' to the code and recursively
-  // get the codes for the left child
-  else {
+//   // If the current node has a left child,
+//   // add a '0' to the code and recursively
+//   // get the codes for the left child
+//   else {
+//     arr[top] = 0;
+//     getCodes(root->left, codes, arr, top + 1);
+//   }
+ 
+//   // If the current node has a right child,
+//   // add a '1' to the code and recursively
+//   // get the codes for the right child
+//   if (root->right) {
+//     arr[top] = 1;
+//     getCodes(root->right, codes, arr, top + 1);
+//   }
+// }
+void getCodes(struct MinHeapNode* root, char* codes[], int arr[], int top)
+{
+  // Assign 0 to left edge and recur
+  if (root->left) {
     arr[top] = 0;
     getCodes(root->left, codes, arr, top + 1);
   }
  
-  // If the current node has a right child,
-  // add a '1' to the code and recursively
-  // get the codes for the right child
+  // Assign 1 to right edge and recur
   if (root->right) {
     arr[top] = 1;
     getCodes(root->right, codes, arr, top + 1);
   }
+ 
+  // If this is a leaf node, then
+  // it contains one of the input
+  // characters, print the character
+  // and its code from arr[]
+  if (!root->left && !root->right) {
+    codes[root->data] = (char*)malloc(top + 1);
+    for (int i = 0; i < top; ++i) {
+      codes[root->data][i] = arr[i] + '0';
+    }
+    codes[root->data][top] = '\0';
+  }
 }
+
 
 
 // char* compress(char* str)
@@ -442,7 +469,7 @@ char* runLengthEncode(char* str)
     // If the current character is different
     // from the previous one, add the count
     // and the character to the encoded string
-    if (str[i] != last || count == 9) {
+    if (str[i] != last || count == 9 ) {
       if (count >= 3) {
         encoded[j++] = count + '0';
       }
@@ -535,7 +562,7 @@ int main()
 
 
   // Calculate the length of the original string
-  int original_length = strlen(str)*sizeof(char);
+  int original_length = strlen(str)*8;
 
   printf("Original string: %s\n", str);
   printf("Original string in bits: ");
@@ -581,6 +608,12 @@ for (int i = 0; str[i]; i++)
 double ratio = (double)compressed_length / (double)original_length;
 
 printf("Compression ratio: %f", ratio);
+
+// Compression efficiency = (1 - (compressed length / original length)) * 100
+
+double efficiency = (1 - ratio) * 100;
+printf("\nCompression efficiency: %f %%", efficiency);
+
 
   return 0;
 }
