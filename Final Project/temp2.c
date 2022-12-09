@@ -379,7 +379,7 @@ char* decompress(char* str, struct MinHeapNode* root)
  
   // Add a null character at the end
   // of the decompressed string
-  decompressed[j] = '\0';
+  decompressed[j] = '\0'; // j is the length of the decompressed string
  
   // Return the decompressed string
   return decompressed;
