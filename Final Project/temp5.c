@@ -550,7 +550,13 @@ int main()
 for (int i = 0; str[i]; i++)
   freq[str[i]]++;
 
- 
+ // print frequencies
+    printf("Frequencies: ");
+    for (int i = 0; i < 256; i++)
+        if (freq[i])
+            printf("%c: %d ", i, freq[i]);
+    printf("\n");
+    
  
   // Build Huffman Tree
   struct MinHeapNode* root
