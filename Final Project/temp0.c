@@ -140,8 +140,8 @@ void printHuffmanTree(nodeAddress root)
 {
     if (root)
     {
-        printf("%c %d ", root->data, root->freq);
         printHuffmanTree(root->left);
+        printf("%c %d ", root->data, root->freq);
         printHuffmanTree(root->right);
     }
 }
