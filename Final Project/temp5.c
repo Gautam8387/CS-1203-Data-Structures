@@ -426,6 +426,23 @@ void printBits(char* str)
   printf("\n");
 }
 
+// void printBits(char* str){
+//     for (int i = 0; str[i]; i++) {
+//     // Convert the character to an int and
+//     // print its binary representation
+//     int val = str[i];
+//     for (int j = 0; j < 8; j++) {
+//         if (val & 128) {
+//             printf("1");
+//         } else {
+//             printf("0");
+//         }
+//         val <<= 1;
+//     }
+//     printf(" ");
+//     }
+// }
+
 char* runLengthEncode(char* str)
 {
   // Allocate memory for the encoded string
