@@ -469,14 +469,31 @@ char* runLengthDecode(char* str)
   return decoded;
 }
 
+int check(char* str){
+    if(strlen(str) > 100 || strlen(str) < 1){
+        return 1;
+    }
+    for (int i = 0; str[i]; i++) {
+        if(isdigit(str[i])){
+            return 1;
+        }
+    }
+    return 0;
+}
 
 // Driver Program
 int main(int argc, char const *argv[])
 {
     char* str;
     // Enter a String
-    printf("Enter a string: ");
+    printf("Enter non-numeric string (256 character max): ");
     gets(str);
+
+    if(check(str)){
+        printf("Invalid Input");
+        return 0;
+    }
+
 
     // Calculate size of original string
     int original_size = strlen(str)*8;
