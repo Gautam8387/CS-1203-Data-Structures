@@ -73,3 +73,7 @@ On Runtime:
 - The program prints the frequencies of each character in the string
 - It also outputs the decompressed string along with decoded string.
 - It also outputs the compression ratio.
+
+IMPORTANT NOTE:
+- The code runs perfectly on my machine
+- In case the compilation fails, the code also runs on an online compiler: https://www.onlinegdb.com/online_c_compiler 
