@@ -5,6 +5,14 @@ December 22, 2022
 
 Final Project Idea: COMPRESSION ALGORITHM (HUFFMAN CODING + RUN-LENGTH ENCODING + MIN-HEAP)
 
+LOGIC:
+- If a string has repeatition of characters, then note down the frequency and create a string with single character.
+- This is the new compressed string
+- Now, create a Huffman Tree using the frequencies of each character using min-heap data structure.
+- When decompressing, note down the frequencies and produce the original srings.
+- If the string has no repeatition, then this compression doesn't work well.
+
+
 IMPLEMENTATION:
 - A C program to compress the user input string using Huffman Coding
 - The program takes a string as input and output the compressed string
