@@ -70,5 +70,6 @@ On Runtime:
 - The user is prompted to enter a string.
 - Input a string which is less than 256 characters and does not contain any numerical characters.
 - The program then outputs the  RL-encoded string, string in bits format, compressed string in bits format.
+- The program prints the frequencies of each character in the string
 - It also outputs the decompressed string along with decoded string.
 - It also outputs the compression ratio.
